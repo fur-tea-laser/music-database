@@ -1,0 +1,728 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "92aef250-b2ad-476c-9872-9783a1a2da2f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "musicArtists": {
+      "name": "musicArtists",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "artistName": {
+          "name": "artistName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollectionArtists": {
+      "name": "musicCollectionArtists",
+      "columns": {
+        "musicCollectionId": {
+          "name": "musicCollectionId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "musicArtistId": {
+          "name": "musicArtistId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicCollectionArtists_musicCollectionId_musicCollections_id_fk": {
+          "name": "musicCollectionArtists_musicCollectionId_musicCollections_id_fk",
+          "tableFrom": "musicCollectionArtists",
+          "tableTo": "musicCollections",
+          "columnsFrom": [
+            "musicCollectionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicCollectionArtists_musicArtistId_musicArtists_id_fk": {
+          "name": "musicCollectionArtists_musicArtistId_musicArtists_id_fk",
+          "tableFrom": "musicCollectionArtists",
+          "tableTo": "musicArtists",
+          "columnsFrom": [
+            "musicArtistId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicCollectionArtists_musicCollectionId_musicArtistId_pk": {
+          "columns": [
+            "musicCollectionId",
+            "musicArtistId"
+          ],
+          "name": "musicCollectionArtists_musicCollectionId_musicArtistId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollectionContexts": {
+      "name": "musicCollectionContexts",
+      "columns": {
+        "musicCollectionId": {
+          "name": "musicCollectionId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "musicContextId": {
+          "name": "musicContextId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicCollectionContexts_musicCollectionId_musicCollections_id_fk": {
+          "name": "musicCollectionContexts_musicCollectionId_musicCollections_id_fk",
+          "tableFrom": "musicCollectionContexts",
+          "tableTo": "musicCollections",
+          "columnsFrom": [
+            "musicCollectionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicCollectionContexts_musicContextId_musicContexts_id_fk": {
+          "name": "musicCollectionContexts_musicContextId_musicContexts_id_fk",
+          "tableFrom": "musicCollectionContexts",
+          "tableTo": "musicContexts",
+          "columnsFrom": [
+            "musicContextId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicCollectionContexts_musicCollectionId_musicContextId_pk": {
+          "columns": [
+            "musicCollectionId",
+            "musicContextId"
+          ],
+          "name": "musicCollectionContexts_musicCollectionId_musicContextId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollectionKind": {
+      "name": "musicCollectionKind",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "collectionLabel": {
+          "name": "collectionLabel",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollectionLinks": {
+      "name": "musicCollectionLinks",
+      "columns": {
+        "musicCollectionId": {
+          "name": "musicCollectionId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "musicLinkId": {
+          "name": "musicLinkId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicCollectionLinks_musicCollectionId_musicCollections_id_fk": {
+          "name": "musicCollectionLinks_musicCollectionId_musicCollections_id_fk",
+          "tableFrom": "musicCollectionLinks",
+          "tableTo": "musicCollections",
+          "columnsFrom": [
+            "musicCollectionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicCollectionLinks_musicLinkId_musicLinks_id_fk": {
+          "name": "musicCollectionLinks_musicLinkId_musicLinks_id_fk",
+          "tableFrom": "musicCollectionLinks",
+          "tableTo": "musicLinks",
+          "columnsFrom": [
+            "musicLinkId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicCollectionLinks_musicCollectionId_musicLinkId_pk": {
+          "columns": [
+            "musicCollectionId",
+            "musicLinkId"
+          ],
+          "name": "musicCollectionLinks_musicCollectionId_musicLinkId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollectionTags": {
+      "name": "musicCollectionTags",
+      "columns": {
+        "musicCollectionId": {
+          "name": "musicCollectionId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "musicTagId": {
+          "name": "musicTagId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicCollectionTags_musicCollectionId_musicCollections_id_fk": {
+          "name": "musicCollectionTags_musicCollectionId_musicCollections_id_fk",
+          "tableFrom": "musicCollectionTags",
+          "tableTo": "musicCollections",
+          "columnsFrom": [
+            "musicCollectionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicCollectionTags_musicTagId_musicTags_id_fk": {
+          "name": "musicCollectionTags_musicTagId_musicTags_id_fk",
+          "tableFrom": "musicCollectionTags",
+          "tableTo": "musicTags",
+          "columnsFrom": [
+            "musicTagId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicCollectionTags_musicCollectionId_musicTagId_pk": {
+          "columns": [
+            "musicCollectionId",
+            "musicTagId"
+          ],
+          "name": "musicCollectionTags_musicCollectionId_musicTagId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicCollections": {
+      "name": "musicCollections",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "collectionTitle": {
+          "name": "collectionTitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "collectionCoverUrl": {
+          "name": "collectionCoverUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "collectionNotes": {
+          "name": "collectionNotes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "collectionDateYear": {
+          "name": "collectionDateYear",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "collectionDateMonth": {
+          "name": "collectionDateMonth",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "collectionKindId": {
+          "name": "collectionKindId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicCollections_collectionKindId_musicCollectionKind_id_fk": {
+          "name": "musicCollections_collectionKindId_musicCollectionKind_id_fk",
+          "tableFrom": "musicCollections",
+          "tableTo": "musicCollectionKind",
+          "columnsFrom": [
+            "collectionKindId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicContexts": {
+      "name": "musicContexts",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "contextLabel": {
+          "name": "contextLabel",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicLinks": {
+      "name": "musicLinks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "musicPlatformId": {
+          "name": "musicPlatformId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "linkUrl": {
+          "name": "linkUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicLinks_musicPlatformId_musicPlatforms_id_fk": {
+          "name": "musicLinks_musicPlatformId_musicPlatforms_id_fk",
+          "tableFrom": "musicLinks",
+          "tableTo": "musicPlatforms",
+          "columnsFrom": [
+            "musicPlatformId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicPlatforms": {
+      "name": "musicPlatforms",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "platformName": {
+          "name": "platformName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "platformLabel": {
+          "name": "platformLabel",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "platformUrl": {
+          "name": "platformUrl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicTags": {
+      "name": "musicTags",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "tagLabel": {
+          "name": "tagLabel",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicTrackArtists": {
+      "name": "musicTrackArtists",
+      "columns": {
+        "trackId": {
+          "name": "trackId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "artistId": {
+          "name": "artistId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicTrackArtists_trackId_musicTracks_id_fk": {
+          "name": "musicTrackArtists_trackId_musicTracks_id_fk",
+          "tableFrom": "musicTrackArtists",
+          "tableTo": "musicTracks",
+          "columnsFrom": [
+            "trackId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicTrackArtists_artistId_musicArtists_id_fk": {
+          "name": "musicTrackArtists_artistId_musicArtists_id_fk",
+          "tableFrom": "musicTrackArtists",
+          "tableTo": "musicArtists",
+          "columnsFrom": [
+            "artistId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicTrackArtists_trackId_artistId_pk": {
+          "columns": [
+            "trackId",
+            "artistId"
+          ],
+          "name": "musicTrackArtists_trackId_artistId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicTrackLinks": {
+      "name": "musicTrackLinks",
+      "columns": {
+        "trackId": {
+          "name": "trackId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "linkId": {
+          "name": "linkId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicTrackLinks_trackId_musicTracks_id_fk": {
+          "name": "musicTrackLinks_trackId_musicTracks_id_fk",
+          "tableFrom": "musicTrackLinks",
+          "tableTo": "musicTracks",
+          "columnsFrom": [
+            "trackId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicTrackLinks_linkId_musicLinks_id_fk": {
+          "name": "musicTrackLinks_linkId_musicLinks_id_fk",
+          "tableFrom": "musicTrackLinks",
+          "tableTo": "musicLinks",
+          "columnsFrom": [
+            "linkId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicTrackLinks_trackId_linkId_pk": {
+          "columns": [
+            "trackId",
+            "linkId"
+          ],
+          "name": "musicTrackLinks_trackId_linkId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicTrackTags": {
+      "name": "musicTrackTags",
+      "columns": {
+        "trackId": {
+          "name": "trackId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tagId": {
+          "name": "tagId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicTrackTags_trackId_musicTracks_id_fk": {
+          "name": "musicTrackTags_trackId_musicTracks_id_fk",
+          "tableFrom": "musicTrackTags",
+          "tableTo": "musicTracks",
+          "columnsFrom": [
+            "trackId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "musicTrackTags_tagId_musicTags_id_fk": {
+          "name": "musicTrackTags_tagId_musicTags_id_fk",
+          "tableFrom": "musicTrackTags",
+          "tableTo": "musicTags",
+          "columnsFrom": [
+            "tagId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "musicTrackTags_trackId_tagId_pk": {
+          "columns": [
+            "trackId",
+            "tagId"
+          ],
+          "name": "musicTrackTags_trackId_tagId_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "musicTracks": {
+      "name": "musicTracks",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "trackTitle": {
+          "name": "trackTitle",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "trackCollectionId": {
+          "name": "trackCollectionId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "musicTracks_trackCollectionId_musicCollections_id_fk": {
+          "name": "musicTracks_trackCollectionId_musicCollections_id_fk",
+          "tableFrom": "musicTracks",
+          "tableTo": "musicCollections",
+          "columnsFrom": [
+            "trackCollectionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

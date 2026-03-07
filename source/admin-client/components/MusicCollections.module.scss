@@ -1,0 +1,330 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.headerControls {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.sortSelect {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 0.9em;
+  color: #333;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: #0066cc;
+  }
+}
+
+.addLink {
+  text-decoration: none;
+  background-color: #f8f8f8;
+  color: #0066cc;
+  padding: 8px 16px;
+  border: 1px solid #0066cc;
+  border-radius: 4px;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #f0f7ff;
+    border-style: solid;
+  }
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px 0;
+  background-color: #fff;
+
+  &:not(:first-child) {
+    border-top: 1px solid #eee;
+  }
+}
+
+.itemDataContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.itemMain {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.itemTracksRow {
+  padding-left: 79px; /* image width (64) + gap (15) */
+}
+
+.itemImage {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  flex-shrink: 0;
+}
+
+.itemContent {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
+
+.itemInfo {
+  flex-grow: 0;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 250px;
+}
+
+.itemData {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemActions {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+
+  .editLink {
+    text-decoration: none;
+    background-color: #f8f8f8;
+    color: #0066cc;
+    padding: 8px 16px;
+    border: 1px dashed #0066cc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #f0f7ff;
+      border-style: solid;
+    }
+  }
+}
+
+.itemMeta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85em;
+  color: #666;
+
+  .kind {
+    font-style: italic;
+  }
+}
+
+.itemArtists {
+  font-size: 0.9em;
+  color: #444;
+}
+
+.itemBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 0.75em;
+  padding: 2px 8px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  color: #555;
+}
+
+.context {
+  font-size: 0.75em;
+  padding: 2px 8px;
+  background-color: #e0f0ff;
+  border-radius: 4px;
+  border: 1px solid #b0d0ff;
+  color: #0052a3;
+}
+
+.itemLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  a {
+    font-size: 0.8em;
+    color: #0066cc;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.itemTracks {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  h4 {
+    margin: 0;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  li {
+    font-size: 0.9em;
+    color: #333;
+    padding: 4px 0;
+
+    .trackContent {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .trackInfo {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 200px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .trackTags {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 150px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trackLinks {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 150px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .trackTitle {
+      font-weight: 500;
+    }
+
+    .trackArtists {
+      font-size: 0.85em;
+      color: #666;
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.pageButton {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+
+  &:hover:not(:disabled) {
+    background-color: #eee;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.activePage {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+  }
+}
+
+.backLink {
+  margin-top: 10px;
+  color: #666;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

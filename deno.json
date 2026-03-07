@@ -1,0 +1,25 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "db:push": "deno run -A drizzle-kit push",
+    "db:generate": "deno run -A drizzle-kit generate",
+    "db:migrate": "deno run -A drizzle-kit migrate",
+    "db:seed": "deno run -A source/database/seed.ts",
+    "buildAdminClient": "deno run -A scripts/buildAdminClient.ts",
+    "startAdmin": "deno run -A --unstable-ffi source/main.ts"
+  },
+  "imports": {
+    "@hono/hono": "jsr:@hono/hono@^4.12.3",
+    "@libsql/client": "npm:@libsql/client@^0.17.0",
+    "drizzle-kit": "npm:drizzle-kit@^0.31.9",
+    "drizzle-orm": "npm:drizzle-orm@^0.45.1",
+    "esbuild": "npm:esbuild@^0.27.3",
+    "esbuild-sass-plugin": "npm:esbuild-sass-plugin@^3.6.0",
+    "preact": "npm:preact@^10.28.4",
+    "preact-iso": "npm:preact-iso@^2.11.1"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "npm:preact"
+  }
+}

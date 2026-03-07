@@ -1,0 +1,23 @@
+import { Hono } from "@hono/hono";
+import { serveStatic } from "@hono/hono/deno";
+import { musicCollectionRoutes } from "./routes/musicCollections.ts";
+import { musicArtistRoutes } from "./routes/musicArtists.ts";
+import { musicTagRoutes } from "./routes/musicTags.ts";
+import { musicContextRoutes } from "./routes/musicContexts.ts";
+import { musicCollectionKindRoutes } from "./routes/musicCollectionKinds.ts";
+import { musicLinkRoutes } from "./routes/musicLinks.ts";
+import { musicPlatformRoutes } from "./routes/musicPlatforms.ts";
+import { musicTrackRoutes } from "./routes/musicTracks.ts";
+
+const app = new Hono();
+app.route("/api/musicCollections", musicCollectionRoutes);
+app.route("/api/musicArtists", musicArtistRoutes);
+app.route("/api/musicTags", musicTagRoutes);
+app.route("/api/musicContexts", musicContextRoutes);
+app.route("/api/musicCollectionKinds", musicCollectionKindRoutes);
+app.route("/api/musicLinks", musicLinkRoutes);
+app.route("/api/musicPlatforms", musicPlatformRoutes);
+app.route("/api/musicTracks", musicTrackRoutes);
+app.use("/assets/*", serveStatic({ root: "./admin-client" }));
+app.get("*", serveStatic({ path: "./admin-client/index.html" }));
+Deno.serve(app.fetch);

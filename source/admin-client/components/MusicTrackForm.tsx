@@ -75,14 +75,19 @@ export const MusicTrackFormBase = ({
     }
     const fetchData = async () => {
       try {
-        const [artists, tags, collections, platforms] = await Promise.all([
-          fetch("/api/musicArtists").then((res) => res.json()),
-          fetch("/api/musicTags").then((res) => res.json()),
-          fetch("/api/musicCollections").then((res) => res.json()),
+        const [artistsRes, tagsRes, collectionsRes, platforms] = await Promise.all([
+          fetch("/api/musicArtists?limit=100").then((res) => res.json()),
+          fetch("/api/musicTags?limit=100").then((res) => res.json()),
+          fetch("/api/musicCollections?limit=100").then((res) => res.json()),
           fetch("/api/musicPlatforms").then((res) => res.json()),
         ]);
 
-        setAvailableData({ artists, tags, collections, platforms });
+        setAvailableData({
+          artists: artistsRes.data || [],
+          tags: tagsRes.data || [],
+          collections: collectionsRes.data || [],
+          platforms,
+        });
       } catch (err) {
         console.error("Failed to load available data:", err);
       } finally {

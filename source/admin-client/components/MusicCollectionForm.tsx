@@ -94,15 +94,21 @@ const MusicCollectionFormBase = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [artists, tags, contexts, kinds, platforms] = await Promise.all([
-          fetch("/api/musicArtists").then((res) => res.json()),
-          fetch("/api/musicTags").then((res) => res.json()),
+        const [artistsRes, tagsRes, contexts, kinds, platforms] = await Promise.all([
+          fetch("/api/musicArtists?limit=100").then((res) => res.json()),
+          fetch("/api/musicTags?limit=100").then((res) => res.json()),
           fetch("/api/musicContexts").then((res) => res.json()),
           fetch("/api/musicCollectionKinds").then((res) => res.json()),
           fetch("/api/musicPlatforms").then((res) => res.json()),
         ]);
 
-        setAvailableData({ artists, tags, contexts, kinds, platforms });
+        setAvailableData({
+          artists: artistsRes.data || [],
+          tags: tagsRes.data || [],
+          contexts,
+          kinds,
+          platforms,
+        });
       } catch (err) {
         console.error("Failed to load available data:", err);
       } finally {

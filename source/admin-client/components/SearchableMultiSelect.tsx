@@ -30,12 +30,14 @@ export const SearchableMultiSelect = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const filteredOptions = availableOptions.filter((option) =>
+  const options = Array.isArray(availableOptions) ? availableOptions : [];
+
+  const filteredOptions = options.filter((option) =>
     option[itemLabelKey].toLowerCase().startsWith(searchTerm.toLowerCase()) &&
     !selectedIds.includes(option.id)
   );
 
-  const selectedOptions = availableOptions.filter((option) =>
+  const selectedOptions = options.filter((option) =>
     selectedIds.includes(option.id)
   );
 

@@ -205,19 +205,43 @@
   }
 }
 
+.itemTracksDetails {
+  margin-top: 8px;
+}
+
+.itemTracksSummary {
+  font-size: 0.85em;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow in some browsers */
+  display: flex;
+  align-items: center;
+
+  &::-webkit-details-marker {
+    display: none; /* Hide default arrow in Webkit */
+  }
+
+  &:before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+  }
+}
+
+.itemTracksDetails[open] .itemTracksSummary:before {
+  transform: rotate(90deg);
+}
+
 .itemTracks {
   margin-top: 8px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-
-  h4 {
-    margin: 0;
-    font-size: 0.85em;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
 
   ul {
     list-style: none;

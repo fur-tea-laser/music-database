@@ -199,7 +199,7 @@ export const MusicTrackFormBase = ({
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.fieldGroup}>
-          <label>Track Title:</label>
+          <label>Title:</label>
           <input
             type="text"
             value={formValues.trackTitle}

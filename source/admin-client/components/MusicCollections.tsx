@@ -161,49 +161,53 @@ export const MusicCollections = () => {
               {someMusicCollection.tracks &&
                 someMusicCollection.tracks.length > 0 && (
                 <div className={styles.itemTracksRow}>
-                  <div className={styles.itemTracks}>
-                    <h4>Feature Tracks</h4>
-                    <ul>
-                      {someMusicCollection.tracks.map((track) => (
-                        <li key={track.id}>
-                          <div className={styles.trackContent}>
-                            <div className={styles.trackInfo}>
-                              <span className={styles.trackTitle}>
-                                {track.trackTitle}
-                              </span>
-                              {track.artists && track.artists.length > 0 && (
-                                <span className={styles.trackArtists}>
-                                  {track.artists.map((a) => a.artistName).join(
-                                    ", ",
-                                  )}
+                  <details className={styles.itemTracksDetails}>
+                    <summary className={styles.itemTracksSummary}>
+                      Feature Tracks ({someMusicCollection.tracks.length})
+                    </summary>
+                    <div className={styles.itemTracks}>
+                      <ul>
+                        {someMusicCollection.tracks.map((track) => (
+                          <li key={track.id}>
+                            <div className={styles.trackContent}>
+                              <div className={styles.trackInfo}>
+                                <span className={styles.trackTitle}>
+                                  {track.trackTitle}
                                 </span>
-                              )}
+                                {track.artists && track.artists.length > 0 && (
+                                  <span className={styles.trackArtists}>
+                                    {track.artists.map((a) => a.artistName).join(
+                                      ", ",
+                                    )}
+                                  </span>
+                                )}
+                              </div>
+                              <div className={styles.trackTags}>
+                                {track.tags?.map((t) => (
+                                  <span key={t.tagLabel} className={styles.tag}>
+                                    {t.tagLabel}
+                                  </span>
+                                ))}
+                              </div>
+                              <div className={styles.trackLinks}>
+                                {track.links?.map((l) => (
+                                  <a
+                                    key={l.linkUrl}
+                                    href={l.linkUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ fontSize: "0.75em" }}
+                                  >
+                                    {l.platform?.platformLabel || "Link"}
+                                  </a>
+                                ))}
+                              </div>
                             </div>
-                            <div className={styles.trackTags}>
-                              {track.tags?.map((t) => (
-                                <span key={t.tagLabel} className={styles.tag}>
-                                  {t.tagLabel}
-                                </span>
-                              ))}
-                            </div>
-                            <div className={styles.trackLinks}>
-                              {track.links?.map((l) => (
-                                <a
-                                  key={l.linkUrl}
-                                  href={l.linkUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  style={{ fontSize: "0.75em" }}
-                                >
-                                  {l.platform?.platformLabel || "Link"}
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
                 </div>
               )}
             </div>
